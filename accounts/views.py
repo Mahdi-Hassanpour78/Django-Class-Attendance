@@ -1,12 +1,12 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserSerializers, LoginSerializer
+from .serializers import UserSerializer, LoginSerializer
 from rest_framework.authtoken.models import Token
 
 
 class RegisterView(generics.CreateAPIView):
-    serializer_class = UserSerializers
+    serializer_class = UserSerializer
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)

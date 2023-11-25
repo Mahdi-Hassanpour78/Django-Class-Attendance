@@ -3,10 +3,10 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 
 
-class UserSerializers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = '__all__'
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
         def create(self, validated_data):
