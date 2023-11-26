@@ -27,6 +27,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    role_choices = [
+        ('student', 'Student'),
+        ('professor', 'Professor'),
+        ('admin', 'Admin')
+    ]
+    role = models.CharField(max_length=10, choices=role_choices)
+
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='customuser_set',
